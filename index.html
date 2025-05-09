@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Count it down to May 14 🎉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f0f8f4;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2d4633;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      background: #dbeadd;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown to May 14 🎂</h1>
+  <div id="countdown">Loading...</div>
+
+  
+
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date(new Date().getFullYear(), 4, 14); // May 14
+      const now = new Date();
+
+      // If the date has passed this year, set for next year
+      if (now > targetDate) {
+        targetDate.setFullYear(targetDate.getFullYear() + 1);
+      }
+
+      const diff = targetDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerText =
+        `${days} days ${hours} hrs ${mins} mins ${secs} secs`;
+
+      setTimeout(updateCountdown, 1000);
+    }
+
+    updateCountdown();
+  </script>
+</body>
+</html>
